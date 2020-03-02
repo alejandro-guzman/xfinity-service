@@ -4,15 +4,14 @@ from xfinity_bot import XfinityBot
 
 USERNAME = os.environ["XFINITY_USERNAME"]
 PASSWORD = os.environ["XFINITY_PASSWORD"]
-WAIT_SECONDS = 10
 
 
 def expose(service_name, ip, port):
     try:
         bot = XfinityBot()
-        bot.login(USERNAME, PASSWORD).wait(WAIT_SECONDS)
-        bot.toggle_port_forwarding(True).wait(WAIT_SECONDS)
-        bot.add_service_port(service_name, ip, port).wait(WAIT_SECONDS)
+        bot.login(USERNAME, PASSWORD).wait()
+        bot.toggle_port_forwarding(True).wait()
+        bot.add_service_port(service_name, ip, port).wait()
         return True
     except Exception as e:
         print(e)
